@@ -1,8 +1,10 @@
 //A simple Controller Script for the AKAI MPD 18 Pad Controller.
 //- All CCs mappable
+//- Poly Aftertouch to Timbre (Needs to be set up in the Controller to work!)
 //- Autodetection
 
-loadAPI(1);
+loadAPI(2);
+host.setShouldFailOnDeprecatedUse(true);
 
 host.defineController("Akai", "MPD18", "1.0", "E5C26D00-40A6-11E3-AA6E-0800200C9A66", "Thomas Helzle");
 host.defineMidiPorts(1, 1);
@@ -14,13 +16,11 @@ var HIGHEST_CC = 119;
 
 function init() {
    var AKAI = host.getMidiInPort(0).createNoteInput("Pads", "??????");
-   host.getMidiInPort(0).setMidiCallback(onMidi);
-	//host.getMidiInPort(0).setSysexCallback(onSysex);
-  	host.getMidiOutPort(0).setShouldSendMidiBeatClock(true);
  	AKAI.setShouldConsumeEvents(false);
+   host.getMidiInPort(0).setMidiCallback(onMidi);
 
    // Make CCs 2-119 freely mappable
-   userControls = host.createUserControlsSection(HIGHEST_CC - LOWEST_CC + 1);
+   userControls = host.createUserControls(HIGHEST_CC - LOWEST_CC + 1);
 
    for(var i=LOWEST_CC; i<=HIGHEST_CC; i++) {
       userControls.getControl(i - LOWEST_CC).setLabel("CC" + i);
