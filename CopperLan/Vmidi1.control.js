@@ -5,7 +5,8 @@
 //- Midi Beat Clock
 //- Autodetection
 
-loadAPI(1);
+loadAPI(2);
+host.setShouldFailOnDeprecatedUse(true);
 
 host.defineController("CopperLan", "VMidi 1", "1.0", "2E92F140-40BF-11E3-AA6E-0800200C9A66", "Thomas Helzle");
 host.defineMidiPorts(1, 1);
@@ -50,13 +51,11 @@ function init() {
    VMidi15.setShouldConsumeEvents(false);
    VMidi16.setShouldConsumeEvents(false);
 
-	host.getMidiOutPort(0).setShouldSendMidiBeatClock(true);
-
    host.getMidiInPort(0).setMidiCallback(onMidi);
 	//host.getMidiInPort(0).setSysexCallback(onSysex);
 
    // Make CCs 2-119 freely mappable
-   userControls = host.createUserControlsSection(HIGHEST_CC - LOWEST_CC + 1);
+   userControls = host.createUserControls(HIGHEST_CC - LOWEST_CC + 1);
    for(var i=LOWEST_CC; i<=HIGHEST_CC; i++) {
       userControls.getControl(i - LOWEST_CC).setLabel("CC" + i);
    }
