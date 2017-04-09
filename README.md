@@ -1,4 +1,4 @@
-Toms_Bitwig_Scripts
+Toms_Bitwig_Scripts 2.0
 ===================
 
 Custom Controller Scripts for Bitwig Studio 2.x
