@@ -5,7 +5,8 @@
 //- Sending Midi Beat Clock.
 //- Sending Feedback to the Controller for the CCs
 
-loadAPI(1);
+loadAPI(2);
+host.setShouldFailOnDeprecatedUse(true);
 
 host.defineController("TomsScripts", "TomsMultiBiController", "1.0", "f03747e0-d9f0-11e3-9c1a-0800200c9a66", "Thomas Helzle");
 host.defineMidiPorts(1, 1);
@@ -65,9 +66,6 @@ function init() {
    MultiBi15.setShouldConsumeEvents(false);
    MultiBi16.setShouldConsumeEvents(false);
 
-
-	// Enable Midi Beat Clock. Comment out if you don't want that
-	host.getMidiOutPort(0).setShouldSendMidiBeatClock(true);
 
 	// Setting Callbacks for Midi and Sysex
    host.getMidiInPort(0).setMidiCallback(onMidi);

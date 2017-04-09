@@ -3,7 +3,8 @@
 // Sends Midi Beat Clock
 // Maps CC 1-119 to User Controlls
 
-loadAPI(1);
+loadAPI(2);
+host.setShouldFailOnDeprecatedUse(true);
 
 host.defineController("TomsScripts", "MIDI Keyboard InOut", "1.0", "f60c7450-b5bb-11e3-a5e2-0800200c9a66", "Thomas Helzle");
 host.defineMidiPorts(1, 1);
@@ -15,11 +16,10 @@ function init() {
    Generic = host.getMidiInPort(0).createNoteInput("Keys", "??????");
 	Generic.setShouldConsumeEvents(false);
 
- 	host.getMidiOutPort(0).setShouldSendMidiBeatClock(true);
    host.getMidiInPort(0).setMidiCallback(onMidi);
 
    // Make CCs 2-119 freely mappable
-   userControls = host.createUserControlsSection(HIGHEST_CC - LOWEST_CC + 1);
+   userControls = host.createUserControls(HIGHEST_CC - LOWEST_CC + 1);
 
    for(var i=LOWEST_CC; i<=HIGHEST_CC; i++) {
       userControls.getControl(i - LOWEST_CC).setLabel("CC" + i);

@@ -1,7 +1,8 @@
 //Basic generic Controller Script. Result of my Intro-Tutorial here:
 //http://blog.thomashelzle.de/2014/04/bitwig-studio-tutorial-1how-to-create-named-controllers/
 
-loadAPI(1);
+loadAPI(2);
+host.setShouldFailOnDeprecatedUse(true);
 
 host.defineController("Acme", "Acme Keyboard", "1.0", "d84e03d0-b605-11e3-a5e2-0800200c9a66");
 host.defineMidiPorts(1, 0);
@@ -16,7 +17,7 @@ function init() {
    host.getMidiInPort(0).setMidiCallback(onMidi);
 
    // Make CCs 2-119 freely mappable
-   userControls = host.createUserControlsSection(HIGHEST_CC - LOWEST_CC + 1);
+   userControls = host.createUserControls(HIGHEST_CC - LOWEST_CC + 1);
 
    for(var i=LOWEST_CC; i<=HIGHEST_CC; i++) {
       userControls.getControl(i - LOWEST_CC).setLabel("CC" + i);
