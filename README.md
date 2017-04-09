@@ -1,7 +1,7 @@
 Toms_Bitwig_Scripts
 ===================
 
-Custom Controller Scripts for Bitwig Studio
+Custom Controller Scripts for Bitwig Studio 2.x
 
 These are Scripts I created for Bitwig Studio both for my own use and to help other users with their setups.
 
