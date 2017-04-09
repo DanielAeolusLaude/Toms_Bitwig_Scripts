@@ -2,7 +2,8 @@
 //- All CCs mappable
 //- Autodetection
 
-loadAPI(1);
+loadAPI(2);
+host.setShouldFailOnDeprecatedUse(true);
 
 host.defineController("Eowave", "The Ribbon", "1.0", "eb786b00-8ec0-11e4-b4a9-0800200c9a66", "Thomas Helzle");
 host.defineMidiPorts(1, 1);
@@ -20,7 +21,7 @@ function init() {
    eowave.setShouldConsumeEvents(false);
 
    // Make CCs freely mappable
-   userControls = host.createUserControlsSection(HIGHEST_CC - LOWEST_CC + 1);
+   userControls = host.createUserControls(HIGHEST_CC - LOWEST_CC + 1);
 
    for(var i=LOWEST_CC; i<=HIGHEST_CC; i++) {
       userControls.getControl(i - LOWEST_CC).setLabel("CC" + i);
