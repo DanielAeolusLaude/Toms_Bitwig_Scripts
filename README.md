@@ -3,6 +3,8 @@ Toms_Bitwig_Scripts 2.0
 
 Custom Controller Scripts for Bitwig Studio 2.x
 
+Find the old scripts for Bitwig Stuido 1.x in the Branch Bitwig-1.x
+
 These are Scripts I created for Bitwig Studio both for my own use and to help other users with their setups.
 
 Install them in the Bitwig User directory:
