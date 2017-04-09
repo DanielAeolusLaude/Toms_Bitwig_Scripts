@@ -1,7 +1,8 @@
 //A simple Controller Script for the Doepfer LMK3 Keyboard.
 //- All CCs mappable
 
-loadAPI(1);
+loadAPI(2);
+host.setShouldFailOnDeprecatedUse(true);
 
 host.defineController("Doepfer", "LMK3", "1.0", "995C2A90-3427-11E3-AA6E-0800200C9A66", "Thomas Helzle");
 host.defineMidiPorts(1, 1);
@@ -16,7 +17,7 @@ function init() {
 	host.getMidiInPort(0).setMidiCallback(onMidi);
 
    // Make CCs 2-119 freely mappable
-   userControls = host.createUserControlsSection(HIGHEST_CC - LOWEST_CC + 1);
+   userControls = host.createUserControls(HIGHEST_CC - LOWEST_CC + 1);
 
    for(var i=LOWEST_CC; i<=HIGHEST_CC; i++) {
       userControls.getControl(i - LOWEST_CC).setLabel("CC" + i);
