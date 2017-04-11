@@ -81,7 +81,7 @@ function init() {
          // Set a label/name for each userControl
          userControls.getControl(c).setLabel("CC " + i + " - Channel " + j);
          // Add a ValueObserver for each userControl
-         userControls.getControl(c).addValueObserver(127, getValueObserverFunc(c, ccValue));
+         userControls.getControl(c).value().addValueObserver(127, getValueObserverFunc(c, ccValue));
       }
    }
 }
